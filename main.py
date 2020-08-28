@@ -29,7 +29,7 @@ from multiprocessing import Process, Queue
 # ## VARIABLE ## #
 
 # nom de l'interface wifi
-interface_wifi = "wlp1s0" 
+interface_wifi = "wlan1" 
 
 
 # ## FONCTIONS ## #
@@ -59,6 +59,7 @@ def monitorStop():
     airmon_ng("stop", interface_wifi).exit_code == 0
     # En fonction de l'OS, permet de relancer les interfaces réseaux
     # service("network-manager", "start").exit_code == 0
+    service("dhcpcd", "restart").exit_code == 0
 
 
 def signal_handler(signal, frame):
